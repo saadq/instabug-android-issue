@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		255FBC421CB1D216CE9B69C2 /* Instabug.framework in Embed Instabug Framework */ = {isa = PBXBuildFile; fileRef = 6C9C41389B4F022624EAF16F /* Instabug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35B33DD9D22A8EAA93353EF9 /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9C41389B4F022624EAF16F /* Instabug.framework */; };
 		B501732B1DC01252003445D9 /* EXShell.plist in Resources */ = {isa = PBXBuildFile; fileRef = B501732A1DC01252003445D9 /* EXShell.plist */; };
 		B56386491DB9693800A0598C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B56386481DB9693800A0598C /* AppDelegate.m */; };
 		B56386511DB9693800A0598C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56386501DB9693800A0598C /* Assets.xcassets */; };
@@ -21,8 +23,23 @@
 		EBB8117C1BFA0514F79CAF74 /* libPods-instabug-android-bug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A88D15726AD99E8A257BC7 /* libPods-instabug-android-bug.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		926AF6A98827EBC6B7C1A543 /* Embed Instabug Framework */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				255FBC421CB1D216CE9B69C2 /* Instabug.framework in Embed Instabug Framework */,
+			);
+			name = "Embed Instabug Framework";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2C1548D9E4CB1AEFA5CCAE6D /* Pods-instabug-android-bug.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instabug-android-bug.debug.xcconfig"; path = "Pods/Target Support Files/Pods-instabug-android-bug/Pods-instabug-android-bug.debug.xcconfig"; sourceTree = "<group>"; };
+		6C9C41389B4F022624EAF16F /* Instabug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Instabug.framework; path = "../node_modules/instabug-reactnative/ios/Instabug.framework"; sourceTree = "<group>"; };
 		A47FE4D7F70906B7DC8CE39B /* Pods-instabug-android-bug.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instabug-android-bug.release.xcconfig"; path = "Pods/Target Support Files/Pods-instabug-android-bug/Pods-instabug-android-bug.release.xcconfig"; sourceTree = "<group>"; };
 		B501732A1DC01252003445D9 /* EXShell.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EXShell.plist; sourceTree = "<group>"; };
 		B56386411DB9693800A0598C /* instabug-android-bug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "instabug-android-bug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +64,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBB8117C1BFA0514F79CAF74 /* libPods-instabug-android-bug.a in Frameworks */,
+				35B33DD9D22A8EAA93353EF9 /* Instabug.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A88D15726AD99E8A257BC7 /* libPods-instabug-android-bug.a */,
+				6C9C41389B4F022624EAF16F /* Instabug.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -131,6 +150,8 @@
 				8D34C7FE3D99F20E5EA1B18A /* [CP] Embed Pods Frameworks */,
 				AA38385B7D8D0854176B72FC /* [CP] Copy Pods Resources */,
 				19D233B7204FDD7D0087ED51 /* Bundle Expo Assets */,
+				926AF6A98827EBC6B7C1A543 /* Embed Instabug Framework */,
+				28D5256F5E72274891EE0618 /* Strip Frameworks */,
 			);
 			buildRules = (
 			);
@@ -223,6 +244,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		28D5256F5E72274891EE0618 /* Strip Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework/strip-frameworks.sh\"\n";
+			showEnvVarsInLog = 1;
 		};
 		8D34C7FE3D99F20E5EA1B18A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -391,9 +431,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C8D8QTF339;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"../node_modules/instabug-reactnative/ios",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/instabug-android-bug/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.instabug.androidbug";
+				PRODUCT_BUNDLE_IDENTIFIER = com.instabug.androidbug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -405,9 +449,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C8D8QTF339;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"../node_modules/instabug-reactnative/ios",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/instabug-android-bug/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.instabug.androidbug";
+				PRODUCT_BUNDLE_IDENTIFIER = com.instabug.androidbug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

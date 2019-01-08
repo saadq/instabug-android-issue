@@ -34,6 +34,7 @@ import expolib_v1.okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
+import com.instabug.reactlibrary.RNInstabugReactnativePackage;
 
 public class MainApplication extends ExpoApplication implements AppLoaderPackagesProviderInterface<ReactPackage> {
 
@@ -49,7 +50,13 @@ public class MainApplication extends ExpoApplication implements AppLoaderPackage
         // TODO: add native modules!
 
         // Needed for `react-native link`
-        // new MainReactPackage()
+        // new MainReactPackage(),
+            		new RNInstabugReactnativePackage.Builder("dddb853a1659eb00d574035bcd7d96d2",MainApplication.this)
+							.setInvocationEvent("shake")
+							.setPrimaryColor("#1D82DC")
+							.setFloatingEdge("left")
+							.setFloatingButtonOffsetFromTop(250)
+							.build()
     );
   }
 
